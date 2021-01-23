@@ -5,9 +5,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title> Home Page </title>
+<style >
+   form{
+      text-align : center ;
+      margin-top : 20px ;
+      margin-right : 20px ;
+      margin-down : 20px ;
+      
+   }
+</style>
 
 </head>
 <body style="text-align:center;" >
+<button style="text-align :right;position :relative; left:250px; backgroud:blue;" type="button"><a href="FetchProduct.jsp">AddProduct</a></button>
+<br><br><br>
 <form method="post" action = "addproduct">
    <fieldset>
    <br><br>

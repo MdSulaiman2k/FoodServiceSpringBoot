@@ -25,10 +25,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping("addproduct")
-	
 	public String addProduct(FoodProduct fp) {
 		fs.save(fp) ;
 		return "Home" ;
 	}
+	
+	@RequestMapping("getProduct")
+	public ModelAndView getProduct(int fid) {
+		ModelAndView mv = new ModelAndView("FetchProduct") ;
+		FoodProduct fp = fs.findById(fid).orElse(null) ;
+		return mv ;
+	} 
 
 }
