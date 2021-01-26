@@ -1,5 +1,8 @@
 package com.Food.FoodService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -31,10 +34,35 @@ public class HomeController {
 	}
 	
 	@RequestMapping("getProduct")
-	public ModelAndView getProduct(int fid) {
-		ModelAndView mv = new ModelAndView("FetchProduct") ;
-		FoodProduct fp = fs.findById(fid).orElse(null) ;
+	public String getProduct() {
+		return "FetchProduct" ;
+	}
+	
+	@RequestMapping("getProducts")
+	public ModelAndView getProducts(int fid ) {
+		System.out.println(fid);
+		
+		ModelAndView mv = new ModelAndView() ;
+		mv.setViewName("FetchProduct");
+		FoodProduct fp = null  ;
+		fp = fs.findById(fid).orElse(new FoodProduct()) ;
+		System.out.println(fp) ;
+		mv.addObject(fp) ;
 		return mv ;
-	} 
+		
+	}
+	
+	@RequestMapping("getProductsName")
+	public ModelAndView getProductByName(String fname) {
+		ModelAndView mv =  new ModelAndView() ;
+		mv.setViewName("FetchProduct");
+		List <FoodProduct> fp = new ArrayList<>() ;
+		fp = fs.findByfoodname(fname) ;
+		mv.addObject(fp) ;
+		return mv ;
+		
+	}
+
+	
 
 }
